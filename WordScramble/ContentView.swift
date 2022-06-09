@@ -23,11 +23,13 @@ struct ContentView: View {
                         .autocapitalization(.none)
                 }
                 Section {
-                    ForEach(usedWords, id: \.self) { word in
+                    List(usedWords, id: \.self) { word in
                         HStack {
                             Image(systemName: "\(word.count).circle")
                             Text(word)
                         }
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityLabel("\(word), \(word.count) letters")
                     }
                 }
             }
